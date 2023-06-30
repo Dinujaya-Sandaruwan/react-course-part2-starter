@@ -10,7 +10,7 @@ const TodoForm = () => {
 
   return (
     <>
-      {addTodo.error && (
+      {addTodo?.error && (
         <div className="alert alert-danger">{addTodo.error.message}</div>
       )}
       <form
@@ -24,7 +24,7 @@ const TodoForm = () => {
           }
 
           if (ref.current && ref.current.value) {
-            addTodo.mutate({
+            addTodo?.mutate({
               id: 0,
               title: ref.current.value,
               completed: false,
@@ -37,8 +37,8 @@ const TodoForm = () => {
           <input ref={ref} type="text" className="form-control" />
         </div>
         <div className="col">
-          <button className="btn btn-primary" disabled={addTodo.isLoading}>
-            {addTodo.isLoading ? "Saving..." : "Add Todo"}
+          <button className="btn btn-primary" disabled={addTodo?.isLoading}>
+            {addTodo?.isLoading ? "Saving..." : "Add Todo"}
           </button>
         </div>
       </form>

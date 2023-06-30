@@ -8,15 +8,14 @@ interface AddTodoContext {
   previousTodos: Todo[];
 }
 
-function useAddTodos(onAdd: () => void) {
+const useAddTodos = (onAdd: () => void) => {
   const queryClient = useQueryClient();
 
   return useMutation<Todo, Error, Todo, AddTodoContext>({
-    mutationFn: (todo: Todo) => {
+    mutationFn: (todo: Todo) =>
       axios
         .post<Todo>("https://jsonplaceholder.typicode.com/todos", todo)
-        .then((res) => res.data);
-    },
+        .then((res) => res.data),
 
     onMutate: (newTodo: Todo) => {
       const previousTodos =
@@ -43,7 +42,6 @@ function useAddTodos(onAdd: () => void) {
       queryClient.setQueryData<Todo[]>(CACHE_KEY_TODOS, context.previousTodos);
     },
   });
-  return;
-}
+};
 
 export default useAddTodos;
