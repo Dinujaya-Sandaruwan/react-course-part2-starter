@@ -10,7 +10,7 @@ const TodoForm = () => {
 
   return (
     <>
-      {addTodo?.error && (
+      {addTodo.error && (
         <div className="alert alert-danger">{addTodo.error.message}</div>
       )}
       <form
@@ -37,9 +37,7 @@ const TodoForm = () => {
           <input ref={ref} type="text" className="form-control" />
         </div>
         <div className="col">
-          <button className="btn btn-primary" disabled={addTodo?.isLoading}>
-            {addTodo?.isLoading ? "Saving..." : "Add Todo"}
-          </button>
+          <button className="btn btn-primary">add</button>
         </div>
       </form>
     </>
