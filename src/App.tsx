@@ -13,15 +13,16 @@ import NavBar from "./state-management/NavBar";
 import HomePage from "./state-management/HomePage";
 import loginReducer from "./state-management/reducers/authReducer";
 import AuthContex from "./state-management/contexts/authContext";
+import AuthProvider from "./state-management/AuthProvider";
 
 function App() {
   const [tasks, tasksDispatch] = useReducer(tasksReducer, []);
-  const [state, authDispatch] = useReducer(loginReducer, "");
+
   return (
     <TaskContex.Provider value={{ tasks, dispatch: tasksDispatch }}>
-      <AuthContex.Provider value={{ state, dispatch: authDispatch }}>
+      <AuthProvider>
         <NavBar /> <HomePage />
-      </AuthContex.Provider>
+      </AuthProvider>
     </TaskContex.Provider>
   );
 }
