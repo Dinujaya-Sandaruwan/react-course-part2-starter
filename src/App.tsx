@@ -11,12 +11,17 @@ import tasksReducer from "./state-management/reducers/tasksReducer";
 import TaskContex from "./state-management/contexts/taskConext";
 import NavBar from "./state-management/NavBar";
 import HomePage from "./state-management/HomePage";
+import loginReducer from "./state-management/reducers/authReducer";
+import AuthContex from "./state-management/contexts/authContext";
 
 function App() {
-  const [tasks, dispatch] = useReducer(tasksReducer, []);
+  const [tasks, tasksDispatch] = useReducer(tasksReducer, []);
+  const [state, authDispatch] = useReducer(loginReducer, "");
   return (
-    <TaskContex.Provider value={{ tasks, dispatch }}>
-      <NavBar /> <HomePage />
+    <TaskContex.Provider value={{ tasks, dispatch: tasksDispatch }}>
+      <AuthContex.Provider value={{ state, dispatch: authDispatch }}>
+        <NavBar /> <HomePage />
+      </AuthContex.Provider>
     </TaskContex.Provider>
   );
 }
