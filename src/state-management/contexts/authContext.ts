@@ -6,6 +6,6 @@ interface AuthContextType {
   dispatch: Dispatch<AuthAction>;
 }
 
-const AuthContex = React.createContext<AuthContextType>({} as AuthContextType);
+const AuthContext = React.createContext<AuthContextType>({} as AuthContextType);
 
-export default AuthContex;
+export default AuthContext;
