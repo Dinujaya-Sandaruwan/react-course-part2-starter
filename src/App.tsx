@@ -13,16 +13,17 @@ import tasksReducer from "./state-management/reducers/tasksReducer";
 import TaskContext from "./state-management/contexts/taskContext";
 import userReducer from "./state-management/reducers/userReducer";
 import UserContext from "./state-management/contexts/userContext";
+import UserProvider from "./state-management/UserProvider";
 
 function App() {
   const [tasks , tasksDispatch] =  useReducer(tasksReducer, [])
-  const [user, userDispatch] = useReducer( userReducer, '' )
+  
   return (
     <TaskContext.Provider value={{tasks, dispatch: tasksDispatch}}>
-      <UserContext.Provider value={{user, dispatch: userDispatch}}>
+      <UserProvider>
       <NavBar/>
       <HomePage/>
-      </UserContext.Provider>
+      </UserProvider>
     </TaskContext.Provider>
   );
 }
