@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { UserAction } from "../reducers/userReducer";
+import { UserAction} from "./UserProvider";
 import React from "react";
 
 interface UserContextType {
