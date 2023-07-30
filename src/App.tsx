@@ -11,13 +11,18 @@ import NavBar from "./state-management/NavBar";
 import TaskList from "./state-management/TaskList";
 import tasksReducer from "./state-management/reducers/tasksReducer";
 import TaskContext from "./state-management/contexts/taskContext";
+import userReducer from "./state-management/reducers/userReducer";
+import UserContext from "./state-management/contexts/userContext";
 
 function App() {
-  const [tasks , dispatch] =  useReducer(tasksReducer, [])
+  const [tasks , tasksDispatch] =  useReducer(tasksReducer, [])
+  const [user, userDispatch] = useReducer( userReducer, '' )
   return (
-    <TaskContext.Provider value={{tasks, dispatch}}>
+    <TaskContext.Provider value={{tasks, dispatch: tasksDispatch}}>
+      <UserContext.Provider value={{user, dispatch: userDispatch}}>
       <NavBar/>
       <HomePage/>
+      </UserContext.Provider>
     </TaskContext.Provider>
   );
 }

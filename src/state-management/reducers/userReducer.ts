@@ -7,9 +7,9 @@ interface Logout {
     status : "LOGGED_OUT";
 }
 
-type Action = Login | Logout;
+export type UserAction = Login | Logout;
 
-const userReducer = (state: string, action: Action): string => {
+const userReducer = (state: string, action: UserAction): string => {
     if (action.status === "LOGGED_IN") {
         return action.name
     }
